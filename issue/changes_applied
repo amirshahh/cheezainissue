@@ -1,0 +1,27 @@
+I updated the code from these below file path
+wp-content\themes\oritina\woocommerce\single-product\related.php
+wp-content\plugins\woocommerce\includes\wc-product-functions.php
+
+code changes 1st file;-
+code added 1st change;" 'meta_query' 		   => array(
+				array(
+						'key' => '_stock_status',
+						'value' => 'instock',
+						'compare' => '='
+				)
+		)" at line 43 
+
+2nd change: added code at line 55 "$top=$products->post_count;
+	
+	if($top > 4)
+	{
+		$top=4;
+	}
+	else
+	{
+		$top=$top;
+	}"
+line#54 from old file "<div class="products-list grid slick-carousel" data-nav="true" data-columns4="1" data-columns3="2" data-columns2="2" data-columns1="<?php echo esc_attr((int)oritina_get_config( 'product-related-cols',3 )); ?>" data-columns="<?php echo esc_attr((int)oritina_get_config( 'product-related-cols',3 )); ?>">" changed to "<div class="products-list related-product-custom grid slick-carousel" data-nav="true" data-columns4="<?= $top?>" data-columns3="<?= $top ?>" data-columns2="<?= $top ?>" data-columns1="<?= $top?>" data-columns="<?= $top ?>">"
+
+code changes 2nd file;-
+  line#=923 from old file "return array_slice( $related_posts, 0, $limit );" changed to "return $related_posts;" in updated file.
